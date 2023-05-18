@@ -1,6 +1,6 @@
 import '/controller/search_controller.dart';
 import '/models/costume.dart';
-import '/screens/category.dart';
+import '/screens/category_dynasty.dart';
 import '/screens/detail.dart';
 import '/widgets/search_box.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +16,10 @@ class ExplorePage extends StatefulWidget {
 
 class _ExplorePageState extends State<ExplorePage> {
   List<Costume> costumeList = Costume.costumeList;
+  Iterable<Costume> nguyenList = Costume.costumeList.where((costume) => costume.category == "Nguyễn").map((e) => Costume(costumeId: e.costumeId, costumeName: e.costumeName, category: e.category, gender: e.gender, imageURL: e.imageURL, images: e.images, decription: e.decription, ));
+  Iterable<Costume> tranList = Costume.costumeList.where((costume) => costume.category == "Trần").map((e) => Costume(costumeId: e.costumeId, costumeName: e.costumeName, category: e.category, gender: e.gender, imageURL: e.imageURL, images: e.images, decription: e.decription, ));
+  Iterable<Costume> namList = Costume.costumeList.where((costume) => costume.gender == "Nam").map((e) => Costume(costumeId: e.costumeId, costumeName: e.costumeName, category: e.category, gender: e.gender, imageURL: e.imageURL, images: e.images, decription: e.decription, ));
+  Iterable<Costume> nuList = Costume.costumeList.where((costume) => costume.category == "Nữ").map((e) => Costume(costumeId: e.costumeId, costumeName: e.costumeName, category: e.category, gender: e.gender, imageURL: e.imageURL, images: e.images, decription: e.decription, ));
 
   @override
   Widget build(BuildContext context) {
@@ -86,11 +90,11 @@ class _ExplorePageState extends State<ExplorePage> {
                             GestureDetector(
                               onTap: () {
                                 Navigator.of(context).push(
-                                  MaterialPageRoute(builder: (context) => CategoryScreen(trieudai: 'Nguyễn',)),
+                                  MaterialPageRoute(builder: (context) => CategoryDScreen(trieudai: 'Nguyễn',)),
                                 );
                               },
                               child: Container(
-                                  width: 165,
+                                  width: 150,
                                   height: 70,
                                   decoration: BoxDecoration(
                                       image: DecorationImage(
@@ -113,11 +117,11 @@ class _ExplorePageState extends State<ExplorePage> {
                             GestureDetector(
                               onTap: () {
                                 Navigator.of(context).push(
-                                  MaterialPageRoute(builder: (context) => CategoryScreen(trieudai: 'Lý',)),
+                                  MaterialPageRoute(builder: (context) => CategoryDScreen(trieudai: 'Lý',)),
                                 );
                               },
                               child: Container(
-                                  width: 165,
+                                  width: 150,
                                   height: 70,
                                   decoration: BoxDecoration(
                                       image: DecorationImage(
@@ -148,11 +152,11 @@ class _ExplorePageState extends State<ExplorePage> {
                             GestureDetector(
                               onTap: () {
                                 Navigator.of(context).push(
-                                  MaterialPageRoute(builder: (context) => CategoryScreen(trieudai: 'Nam',)),
+                                  MaterialPageRoute(builder: (context) => CategoryDScreen(trieudai: 'Trần',)),
                                 );
                               },
                               child: Container(
-                                  width: 165,
+                                  width: 150,
                                   height: 70,
                                   decoration: BoxDecoration(
                                       image: DecorationImage(
@@ -175,11 +179,11 @@ class _ExplorePageState extends State<ExplorePage> {
                             GestureDetector(
                               onTap: () {
                                 Navigator.of(context).push(
-                                  MaterialPageRoute(builder: (context) => CategoryScreen(trieudai: 'Nữ')),
+                                  MaterialPageRoute(builder: (context) => CategoryDScreen(trieudai: 'Lê')),
                                 );
                               },
                               child: Container(
-                                  width: 165,
+                                  width: 150,
                                   height: 70,
                                   decoration: BoxDecoration(
                                       image: DecorationImage(
@@ -225,7 +229,7 @@ class _ExplorePageState extends State<ExplorePage> {
                     ),
                     Container(
                       width: double.infinity,
-                      height: 215,
+                      height: 230,
                       child: ListView.separated(
                         scrollDirection: Axis.horizontal,
                         shrinkWrap: true,
@@ -303,7 +307,7 @@ class _ExplorePageState extends State<ExplorePage> {
                     ),
                     Container(
                       width: double.infinity,
-                      height: 215,
+                      height: 230,
                       child: ListView.separated(
                         scrollDirection: Axis.horizontal,
                         shrinkWrap: true,
@@ -362,83 +366,6 @@ class _ExplorePageState extends State<ExplorePage> {
                     SizedBox(
                       height: 20,
                     ),
-                    // Divider(
-                    //   color: Colors.grey[300],
-                    //   thickness: 1,
-                    // ),
-                    // SizedBox(
-                    //   height: 20,
-                    // ),
-                    // Text(
-                    //   'Phổ biến',
-                    //   style: TextStyle(
-                    //     fontWeight: FontWeight.bold,
-                    //     fontSize: 20,
-                    //   ),
-                    // ),
-                    // SizedBox(
-                    //   height: 20,
-                    // ),
-                    // Container(
-                    //   width: double.infinity,
-                    //   height: 215,
-                    //   child: ListView.separated(
-                    //     scrollDirection: Axis.horizontal,
-                    //     shrinkWrap: true,
-                    //     itemCount: 5,
-                    //     itemBuilder: (context, index) {
-                    //       return GestureDetector(
-                    //         onTap: () {
-                    //           Navigator.push(context, MaterialPageRoute( builder: ((context) => DetailScreen(costumeId: index,))));
-                    //         },
-                    //         child: Container(
-                    //           child: Column(
-                    //             crossAxisAlignment: CrossAxisAlignment.start,
-                    //             children: <Widget>[
-                    //               Container(
-                    //                 decoration: BoxDecoration(
-                    //                   image: DecorationImage(
-                    //                       image: AssetImage('assets/images/example-${index}.png')
-                    //                   ),
-                    //                   borderRadius: BorderRadius.circular(5),
-                    //                 ),
-                    //                 height: 160,
-                    //                 width: 160,
-                    //               ),
-                    //               SizedBox(
-                    //                 height: 10,
-                    //               ),
-                    //               Text(
-                    //                 costumeList[index].category.toUpperCase(),
-                    //                 style: TextStyle(
-                    //                   fontSize: 14,
-                    //                 ),
-                    //               ),
-                    //               SizedBox(
-                    //                 height: 10,
-                    //               ),
-                    //               Text(
-                    //                 costumeList[index].costumeName,
-                    //                 style: TextStyle(
-                    //                   fontWeight: FontWeight.bold,
-                    //                   fontSize: 16,
-                    //                 ),
-                    //               ),
-                    //             ],
-                    //           ),
-                    //         ),
-                    //       );
-                    //     },
-                    //     separatorBuilder: (context, index) {
-                    //       return SizedBox(
-                    //         width: 10,
-                    //       );
-                    //     },
-                    //   ),
-                    // ),
-                    // SizedBox(
-                    //   height: 20,
-                    // )
                   ],
                 ),
               )

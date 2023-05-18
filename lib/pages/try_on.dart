@@ -3,8 +3,10 @@ import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import '../controller/costume_controller.dart';
 import '/models/costume.dart';
 import '/screens/image_preview.dart';
 import 'package:vector_math/vector_math_64.dart' as vector;
@@ -24,6 +26,13 @@ class _TryOnPageState extends State<TryOnPage> with SingleTickerProviderStateMix
   late TabController _tabController;
   int currentIndex = 0;
   late ArCoreController arCoreController;
+  late String url;
+
+  Iterable<Costume> nguyenList = Costume.costumeList.where((costume) => costume.category == "Nguyễn").map((e) => Costume(costumeId: e.costumeId, costumeName: e.costumeName, category: e.category, gender: e.gender, imageURL: e.imageURL, images: e.images, decription: e.decription, ));
+  Iterable<Costume> lyList = Costume.costumeList.where((costume) => costume.category == "Lý").map((e) => Costume(costumeId: e.costumeId, costumeName: e.costumeName, category: e.category, gender: e.gender, imageURL: e.imageURL, images: e.images, decription: e.decription, ));
+  Iterable<Costume> namList = Costume.costumeList.where((costume) => costume.gender == "Nam").map((e) => Costume(costumeId: e.costumeId, costumeName: e.costumeName, category: e.category, gender: e.gender, imageURL: e.imageURL, images: e.images, decription: e.decription, ));
+  Iterable<Costume> nuList = Costume.costumeList.where((costume) => costume.gender == "Nữ").map((e) => Costume(costumeId: e.costumeId, costumeName: e.costumeName, category: e.category, gender: e.gender, imageURL: e.imageURL, images: e.images, decription: e.decription, ));
+
 
   @override
   void initState() {
@@ -117,15 +126,15 @@ class _TryOnPageState extends State<TryOnPage> with SingleTickerProviderStateMix
         },
         controller: _pageController,
         children: [
-          _cameraPreviewWidget(),
-          _cameraPreviewWidget(),
+          _cameraPreviewWidgetTryOn(),
+          _cameraPreviewWidgetAR(),
         ],
       ),
     );
   }
 
   /// Display Camera preview.
-  Widget _cameraPreviewWidget() {
+  Widget _cameraPreviewWidgetTryOn() {
     if (controller == null || !controller!.value.isInitialized) {
       return const Text(
         'Loading',
@@ -137,22 +146,23 @@ class _TryOnPageState extends State<TryOnPage> with SingleTickerProviderStateMix
       );
     }
 
-/*    if (currentIndex == 1) {
-      return AspectRatio(
-        aspectRatio: controller!.value.aspectRatio,
-        child: CameraPreview(controller!, child: ArCoreView(
-          onArCoreViewCreated: _onArCoreViewCreated,
-          enablePlaneRenderer: true,
-          enableTapRecognizer: true,
-          enableUpdateListener: true,
-        )),
-      );
-    }
-
     return AspectRatio(
       aspectRatio: controller!.value.aspectRatio,
       child: CameraPreview(controller!),
-    );*/
+    );
+  }
+
+  Widget _cameraPreviewWidgetAR() {
+    if (controller == null || !controller!.value.isInitialized) {
+      return const Text(
+        'Loading',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 20.0,
+          fontWeight: FontWeight.w900,
+        ),
+      );
+    }
 
     return AspectRatio(
       aspectRatio: controller!.value.aspectRatio,
@@ -198,26 +208,44 @@ class _TryOnPageState extends State<TryOnPage> with SingleTickerProviderStateMix
                               indicatorColor: Colors.white,
                               labelColor: Colors.white,
                               tabs: [
-                                Icon(IconlyBold.heart),
-                                Tab(text: 'Xu hướng',),
+                                Tab(icon: Icon(IconlyLight.heart)),
+                                Tab(text: 'Nổi bật',),
+                                Tab(text: 'Tất cả',),
                                 Tab(text: 'Nguyễn'),
+                                Tab(text: 'Lý'),
                                 Tab(text: 'Trần'),
-                                Tab(text: 'Nam'),
-                                Tab(text: 'Nữ'),
+                                Tab(text: 'Lê'),
                               ],
                             ),
                             Expanded(
                               child: Container(
-                                color: Colors.white.withOpacity(0.3),
+                                color: Colors.black.withOpacity(0.2),
                                 margin: const EdgeInsets.only(top: 10),
                                 child: TabBarView(
                                   controller: _tabController,
                                   children: [
                                     GridView.count(
                                       crossAxisCount: 5,
+                                      children: List.generate(Get.find<CostumeController>().favoriteCostume.length, (index) {
+                                        return Container(
+                                          child: Center(
+                                            child: ClipRRect(
+                                              borderRadius: BorderRadius.circular(10),
+                                              child: Image.asset(
+                                                Get.find<CostumeController>().favoriteCostume.elementAt(index).imageURL,
+                                                fit: BoxFit.cover,
+                                                height: 60,
+                                                width: 60,
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      }),
+                                    ),
+                                    GridView.count(
+                                      crossAxisCount: 5,
                                       children: List.generate(costumeList.length, (index) {
                                         return Container(
-                                          color: Colors.black.withOpacity(0.5),
                                           child: Center(
                                             child: ClipRRect(
                                               borderRadius: BorderRadius.circular(10),
@@ -236,7 +264,6 @@ class _TryOnPageState extends State<TryOnPage> with SingleTickerProviderStateMix
                                       crossAxisCount: 5,
                                       children: List.generate(costumeList.length, (index) {
                                         return Container(
-                                          color: Colors.black.withOpacity(0.5),
                                           child: Center(
                                             child: ClipRRect(
                                               borderRadius: BorderRadius.circular(10),
@@ -253,14 +280,13 @@ class _TryOnPageState extends State<TryOnPage> with SingleTickerProviderStateMix
                                     ),
                                     GridView.count(
                                       crossAxisCount: 5,
-                                      children: List.generate(costumeList.length, (index) {
+                                      children: List.generate(nguyenList.length, (index) {
                                         return Container(
-                                          color: Colors.black.withOpacity(0.5),
                                           child: Center(
                                             child: ClipRRect(
                                               borderRadius: BorderRadius.circular(10),
                                               child: Image.asset(
-                                                'assets/images/example-$index.png',
+                                                nguyenList.elementAt(index).imageURL,
                                                 fit: BoxFit.cover,
                                                 height: 60,
                                                 width: 60,
@@ -272,14 +298,13 @@ class _TryOnPageState extends State<TryOnPage> with SingleTickerProviderStateMix
                                     ),
                                     GridView.count(
                                       crossAxisCount: 5,
-                                      children: List.generate(costumeList.length, (index) {
+                                      children: List.generate(lyList.length, (index) {
                                         return Container(
-                                          color: Colors.black.withOpacity(0.5),
                                           child: Center(
                                             child: ClipRRect(
                                               borderRadius: BorderRadius.circular(10),
                                               child: Image.asset(
-                                                'assets/images/example-$index.png',
+                                                lyList.elementAt(index).imageURL,
                                                 fit: BoxFit.cover,
                                                 height: 60,
                                                 width: 60,
@@ -291,14 +316,13 @@ class _TryOnPageState extends State<TryOnPage> with SingleTickerProviderStateMix
                                     ),
                                     GridView.count(
                                       crossAxisCount: 5,
-                                      children: List.generate(costumeList.length, (index) {
+                                      children: List.generate(namList.length, (index) {
                                         return Container(
-                                          color: Colors.black.withOpacity(0.5),
                                           child: Center(
                                             child: ClipRRect(
                                               borderRadius: BorderRadius.circular(10),
                                               child: Image.asset(
-                                                'assets/images/example-$index.png',
+                                                namList.elementAt(index).imageURL,
                                                 fit: BoxFit.cover,
                                                 height: 60,
                                                 width: 60,
@@ -310,14 +334,13 @@ class _TryOnPageState extends State<TryOnPage> with SingleTickerProviderStateMix
                                     ),
                                     GridView.count(
                                       crossAxisCount: 5,
-                                      children: List.generate(costumeList.length, (index) {
+                                      children: List.generate(nuList.length, (index) {
                                         return Container(
-                                          color: Colors.black.withOpacity(0.5),
                                           child: Center(
                                             child: ClipRRect(
                                               borderRadius: BorderRadius.circular(10),
                                               child: Image.asset(
-                                                'assets/images/example-$index.png',
+                                                nuList.elementAt(index).imageURL,
                                                 fit: BoxFit.cover,
                                                 height: 60,
                                                 width: 60,
@@ -426,7 +449,7 @@ class _TryOnPageState extends State<TryOnPage> with SingleTickerProviderStateMix
         name: "Toucano",
         /*objectUrl:
         "https://modelviewer.dev/shared-assets/models/Astronaut.glb",*/
-        objectUrl: "https://firebasestorage.googleapis.com/v0/b/ar-try-on-1b5c9.appspot.com/o/file%2Fblack.obj?alt=media&token=93a86070-4aed-4dd8-ac68-5e71ffcb0999",
+        objectUrl: url,
         position: plane.pose.translation,
         rotation: plane.pose.rotation);
 

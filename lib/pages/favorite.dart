@@ -1,6 +1,6 @@
 import '/controller/costume_controller.dart';
 import '/pages/explore.dart';
-import '/screens/category.dart';
+import '/screens/category_dynasty.dart';
 import '/screens/detail.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -79,10 +79,10 @@ class _FavoritePageState extends State<FavoritePage> {
               ),
               ElevatedButton(
                 onPressed: () => Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => CategoryScreen(trieudai: 'Nguyễn',)),
+                  MaterialPageRoute(builder: (context) => CategoryDScreen(trieudai: 'Nguyễn',)),
                 ),
                 child: Container(
-                  width: 100,
+                  width: 150,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     child: Row(
@@ -166,15 +166,6 @@ class _FavoritePageState extends State<FavoritePage> {
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 16
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: 27,
-                                          ),
-                                          Text(
-                                            'This tranditonal costume is ...',
-                                            style: TextStyle(
-                                              fontSize: 14,
                                             ),
                                           ),
                                         ],

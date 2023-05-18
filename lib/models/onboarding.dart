@@ -7,16 +7,16 @@ class Onboarding {
   //List of Plants data
   static List<Onboarding> onboardingList = [
     Onboarding(
-        title: "Giới thiệu ứng dụng Trang phục truyền thống AR",
-        description: "There are many traditional costume with designs that are suitable for you today"
+        title: "Giới thiệu ứng dụng",
+        description: "Là nơi có thể khám phá mọi thứ về trang phục đặc biệt kết hợp với AR"
     ),
     Onboarding(
-        title: "Virtual Try On",
-        description: "There are many traditional costume with designs that are suitable for you today"
+        title: "Cloth Try On",
+        description: "Mặc thử trang phục ảo mình yêu thích"
     ),
     Onboarding(
         title: "AR View",
-        description: "There are many traditional costume with designs that are suitable for you today"
+        description: "Trình chiếu mô hình 3D sử dụng công nghệ ARCore"
     ),
   ];
 }

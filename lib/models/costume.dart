@@ -2,7 +2,7 @@ class Costume {
   final int costumeId;
   final String category;
   final String costumeName;
-  final String user;
+  final String gender;
   final String imageURL;
   List<String> images;
   final String decription;
@@ -10,20 +10,19 @@ class Costume {
   Costume(
       {required this.costumeId,
         required this.category,
+        required this.gender,
         required this.costumeName,
-        required this.user,
         required this.imageURL,
         required this.images,
         required this.decription,});
 
-  //List of Plants data
   static List<Costume> costumeList = [
     Costume(
         costumeId: 0,
         category: 'Nguyễn',
+        gender: 'Nam',
         costumeName: 'Áo Tấc',
         imageURL: 'assets/images/example-0.png',
-        user: '',
         images: [
           "assets/images/example-0-1.png",
           "assets/images/example-0-2.png",
@@ -33,8 +32,8 @@ class Costume {
     Costume(
         costumeId: 1,
         category: 'Lý',
+        gender: 'Nam',
         costumeName: 'Viên Lĩnh',
-        user: '',
         imageURL: 'assets/images/example-1.png',
         images: [
           "assets/images/example-1-1.png",
@@ -45,8 +44,8 @@ class Costume {
     Costume(
         costumeId: 2,
         category: 'Nguyễn',
+        gender: 'Nữ',
         costumeName: 'Áo Nhật Bình',
-        user: '',
         imageURL: 'assets/images/example-2.png',
         images: [
           "assets/images/example-2-1.png",
@@ -60,7 +59,7 @@ class Costume {
         costumeId: 3,
         category: 'Lý',
         costumeName: 'Tứ Diện',
-      user: '',
+        gender: 'Nữ',
         imageURL: 'assets/images/example-3.png',
         images: [
           "https://scontent.fsgn2-3.fna.fbcdn.net/v/t39.30808-6/339455358_144265648347745_8817973244890924258_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=0debeb&_nc_ohc=K0h8JSUtCOEAX_vMwcd&_nc_ht=scontent.fsgn2-3.fna&oh=00_AfB_wsycmK_dk8J0fYiWtll80gh0OM15f3kKyL_SL8XXXg&oe=64331C56",
@@ -75,7 +74,7 @@ class Costume {
     Costume(
         costumeId: 4,
         category: 'Lý',
-      user: '',
+        gender: 'Nữ',
         costumeName: 'Viên Lĩnh',
         images: [
           "https://images.unsplash.com/photo-1607355739828-0bf365440db5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1444&q=80",
@@ -92,7 +91,7 @@ class Costume {
     Costume(
         costumeId: 5,
         category: 'Nguyễn',
-        user: '',
+      gender: 'Nữ',
         costumeName: 'Áo Tấc',
         imageURL: 'assets/images/example-5.png',
         images: [
@@ -109,7 +108,7 @@ class Costume {
     Costume(
         costumeId: 6,
         category: 'Nguyễn',
-      user: '',
+      gender: 'Nữ',
         costumeName: 'Plumbago',
 
         imageURL: 'assets/images/example-6.png',
@@ -127,7 +126,7 @@ class Costume {
     Costume(
         costumeId: 7,
         category: 'Nguyễn',
-      user: '',
+      gender: 'Nữ',
         costumeName: 'Tritonia',
         imageURL: 'assets/images/example-7.png',
         images: [
@@ -144,7 +143,7 @@ class Costume {
     Costume(
         costumeId: 8,
         category: 'Nguyễn',
-      user: '',
+      gender: 'Nữ',
         costumeName: 'Tritonia',
         imageURL: 'assets/images/example-8.png',
         images: [
@@ -161,7 +160,7 @@ class Costume {
     Costume(
       costumeId: 9,
       category: 'Nguyễn',
-      user: '',
+      gender: 'Nữ',
       costumeName: 'Tritonia',
       imageURL: 'assets/images/example-9.png',
       images: [

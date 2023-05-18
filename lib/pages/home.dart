@@ -16,9 +16,9 @@ class _HomePageState extends State<HomePage> {
   String hiString = "";
 
   List<Costume> popularCostume = [
-    Costume(costumeId: 0, category: 'NGUYỄN', user: '', costumeName: "Áo Tấc", imageURL: 'assets/images/example-0.png', images: [], decription: "decription"),
-    Costume(costumeId: 1, category: 'LÝ', user: '', costumeName: "Viên Lĩnh", imageURL: 'assets/images/example-1.png', images: [], decription: "decription"),
-    Costume(costumeId: 2, category: 'NGUYỄN', user: '', costumeName: "Áo Nhật Bình", imageURL: 'assets/images/example-2.png', images: [], decription: "decription")
+    Costume(costumeId: 0, category: 'NGUYỄN', gender: "Nam", costumeName: "Áo Tấc", imageURL: 'assets/images/example-0.png', images: [], decription: "decription"),
+    Costume(costumeId: 1, category: 'LÝ', gender: "Nam", costumeName: "Viên Lĩnh", imageURL: 'assets/images/example-1.png', images: [], decription: "decription"),
+    Costume(costumeId: 2, category: 'NGUYỄN', gender: "Nữ", costumeName: "Áo Nhật Bình", imageURL: 'assets/images/example-2.png', images: [], decription: "decription")
   ];
 
   @override

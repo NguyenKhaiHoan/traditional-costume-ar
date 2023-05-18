@@ -56,7 +56,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         onboardingList[currentIndex].title,
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 36,
+                          fontSize: 30,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -66,7 +66,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       Text(
                         onboardingList[currentIndex].description,
                         style: const TextStyle(
-                          fontSize: 20,
+                          fontSize: 16,
                           fontWeight: FontWeight.w400,
                           color: Colors.grey,
                         ),

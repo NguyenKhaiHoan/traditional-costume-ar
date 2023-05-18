@@ -250,20 +250,6 @@ class _DetailScreenState extends State<DetailScreen> {
                                       SizedBox(
                                         width: 10,
                                       ),
-                                      Text('Dành cho: ', style: TextStyle(fontSize: 16),),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Icon(IconlyLight.user, size: 18, color: Colors.black,),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
                                       Text('Giới tính: Nam', style: TextStyle(fontSize: 16),),
                                     ],
                                   ),
@@ -322,7 +308,7 @@ class _DetailScreenState extends State<DetailScreen> {
                               ),
                               Container(
                                 width: double.infinity,
-                                height: 215,
+                                height: 230,
                                 child: ListView.separated(
                                   scrollDirection: Axis.horizontal,
                                   shrinkWrap: true,

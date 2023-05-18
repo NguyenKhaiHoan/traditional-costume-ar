@@ -22,18 +22,8 @@ class _View3DScreenState extends State<View3DScreen> {
             child: Container(
               color: Colors.white,
               child: Center(
-                // child: ModelViewer(
-                //   ar: true,
-                //   autoRotate: true,
-                //   cameraControls: true,
-                //   backgroundColor: Color.fromARGB(0xFF, 0xEE, 0xEE, 0xEE),
-                //   src: 'assets/cubes/Jumpsuit_Female.glb',
-                //   alt: "A 3D model of an astronaut",
-                //   disableZoom: true,
-                //   arPlacement: ArPlacement.floor,
-                // ),
                 child: BabylonJSViewer(
-                  src: 'assets/cubes/Jumpsuit_Female.glb',
+                  src: 'assets/cubes/black.glb',
                 ),
               )
             )
@@ -48,7 +38,7 @@ class _View3DScreenState extends State<View3DScreen> {
                     onTap: () => Navigator.pop(context),
                     child: const Icon(
                       Icons.close_sharp,
-                      color: Colors.black,
+                      color: Colors.white,
                     ),
                   ),
                 ],
