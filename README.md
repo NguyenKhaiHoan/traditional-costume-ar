@@ -1,5 +1,3 @@
-# traditional_costume_ar
-
 # Bài tập lớn môn Chuyên đề công nghệ
 
 Đề bài: Một ứng dụng AR về đề tài văn hóa: Trang phục truyền thống
@@ -11,7 +9,7 @@ Các tính năng
 - &#9745; Tìm kiếm trang phục qua tên
 - &#9745; Chia các trang phục trong từng danh mục rõ ràng
 - &#9744; Mặc thử (Cloth Try-on)
-- &#9745; View AR
+- &#9745; view AR, chọn các trang phục để show
 - &#9745; Lưu các trang phục yêu thích
 
 ## Demo
