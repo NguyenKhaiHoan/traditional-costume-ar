@@ -1,7 +1,11 @@
+import '../models/costume_firebase.dart';
 import '/models/costume.dart';
 import '/screens/detail.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,6 +25,8 @@ class _HomePageState extends State<HomePage> {
     Costume(costumeId: 2, category: 'NGUYỄN', gender: "Nữ", costumeName: "Áo Nhật Bình", imageURL: 'assets/images/example-2.png', images: [], decription: "decription")
   ];
 
+  List<Costume2> upStandingCostume = [];
+
   @override
   void initState() {
     super.initState();
@@ -33,7 +39,25 @@ class _HomePageState extends State<HomePage> {
     } else {
       hiString = "Chào buổi tối";
     }
+    getUsers();
   }
+
+  final List<Costume2> list = [];
+
+  getUsers() async {
+    final snapshot = await FirebaseDatabase.instance.ref('mesh').get();
+
+    final map = snapshot.value as Map<dynamic, dynamic>;
+
+    map.forEach((key, value) {
+      final user = Costume2.fromMap(value);
+      list.add(user);
+    });
+    print(list);
+
+
+  }
+
 
   @override
   Widget build(BuildContext context) {

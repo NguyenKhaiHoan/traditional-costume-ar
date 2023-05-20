@@ -1,5 +1,7 @@
 import 'package:arcore_flutter_plugin/arcore_flutter_plugin.dart';
 import 'package:camera/camera.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -27,6 +29,8 @@ class _TryOnPageState extends State<TryOnPage> with SingleTickerProviderStateMix
   int currentIndex = 0;
   late ArCoreController arCoreController;
   late String url;
+
+  DatabaseReference db_Ref = FirebaseDatabase.instance.ref().child('mesh');
 
   Iterable<Costume> nguyenList = Costume.costumeList.where((costume) => costume.category == "Nguyễn").map((e) => Costume(costumeId: e.costumeId, costumeName: e.costumeName, category: e.category, gender: e.gender, imageURL: e.imageURL, images: e.images, decription: e.decription, ));
   Iterable<Costume> lyList = Costume.costumeList.where((costume) => costume.category == "Lý").map((e) => Costume(costumeId: e.costumeId, costumeName: e.costumeName, category: e.category, gender: e.gender, imageURL: e.imageURL, images: e.images, decription: e.decription, ));
@@ -209,12 +213,12 @@ class _TryOnPageState extends State<TryOnPage> with SingleTickerProviderStateMix
                               labelColor: Colors.white,
                               tabs: [
                                 Tab(icon: Icon(IconlyLight.heart)),
-                                Tab(text: 'Nổi bật',),
                                 Tab(text: 'Tất cả',),
+                                Tab(text: 'Nổi bật',),
                                 Tab(text: 'Nguyễn'),
                                 Tab(text: 'Lý'),
-                                Tab(text: 'Trần'),
-                                Tab(text: 'Lê'),
+                                Tab(text: 'Nam'),
+                                Tab(text: 'Nữ'),
                               ],
                             ),
                             Expanded(
@@ -224,15 +228,33 @@ class _TryOnPageState extends State<TryOnPage> with SingleTickerProviderStateMix
                                 child: TabBarView(
                                   controller: _tabController,
                                   children: [
+                                    // GridView.count(
+                                    //   crossAxisCount: 5,
+                                    //   children: List.generate(Get.find<CostumeController>().favoriteCostume.length, (index) {
+                                    //     return Container(
+                                    //       child: Center(
+                                    //         child: ClipRRect(
+                                    //           borderRadius: BorderRadius.circular(10),
+                                    //           child: Image.asset(
+                                    //             Get.find<CostumeController>().favoriteCostume.elementAt(index).imageURL,
+                                    //             fit: BoxFit.cover,
+                                    //             height: 60,
+                                    //             width: 60,
+                                    //           ),
+                                    //         ),
+                                    //       ),
+                                    //     );
+                                    //   }),
+                                    // ),
                                     GridView.count(
                                       crossAxisCount: 5,
-                                      children: List.generate(Get.find<CostumeController>().favoriteCostume.length, (index) {
+                                      children: List.generate(nguyenList.length, (index) {
                                         return Container(
                                           child: Center(
                                             child: ClipRRect(
                                               borderRadius: BorderRadius.circular(10),
                                               child: Image.asset(
-                                                Get.find<CostumeController>().favoriteCostume.elementAt(index).imageURL,
+                                                nguyenList.elementAt(index).imageURL,
                                                 fit: BoxFit.cover,
                                                 height: 60,
                                                 width: 60,
@@ -260,23 +282,40 @@ class _TryOnPageState extends State<TryOnPage> with SingleTickerProviderStateMix
                                         );
                                       }),
                                     ),
-                                    GridView.count(
-                                      crossAxisCount: 5,
-                                      children: List.generate(costumeList.length, (index) {
-                                        return Container(
-                                          child: Center(
-                                            child: ClipRRect(
-                                              borderRadius: BorderRadius.circular(10),
-                                              child: Image.asset(
-                                                'assets/images/example-$index.png',
-                                                fit: BoxFit.cover,
-                                                height: 60,
-                                                width: 60,
+                                    FirebaseAnimatedList(
+                                      query: db_Ref,
+                                      scrollDirection: Axis.horizontal,
+                                      shrinkWrap: true,
+                                      itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index) {
+                                        Map mesh = snapshot.value as Map;
+                                        return Row(
+                                          children: [
+                                            GestureDetector(
+                                              child: Container(
+                                                child: Center(
+                                                  child: ClipRRect(
+                                                    borderRadius: BorderRadius.circular(10),
+                                                    child: Image.network(
+                                                      mesh['imageUrl'],
+                                                      fit: BoxFit.cover,
+                                                      height: 60,
+                                                      width: 60,
+                                                    ),
+                                                  ),
+                                                ),
                                               ),
+                                              onTap: () {
+                                                setState(() {
+                                                  url = mesh['url'];
+                                                });
+                                              },
                                             ),
-                                          ),
+                                            SizedBox(
+                                              width: 10,
+                                            )
+                                          ],
                                         );
-                                      }),
+                                      },
                                     ),
                                     GridView.count(
                                       crossAxisCount: 5,
@@ -447,9 +486,8 @@ class _TryOnPageState extends State<TryOnPage> with SingleTickerProviderStateMix
   void _addToucano(ArCoreHitTestResult plane) {
     final toucanNode = ArCoreReferenceNode(
         name: "Toucano",
-        /*objectUrl:
-        "https://modelviewer.dev/shared-assets/models/Astronaut.glb",*/
         objectUrl: url,
+        // objectUrl: "https://firebasestorage.googleapis.com/v0/b/ar-try-on-1b5c9.appspot.com/o/file%2FMidnight%20Elegance%2FMidnight%20Elegance.glb?alt=media&token=0420b4a3-96f9-459f-a928-1df2eb5203f3",
         position: plane.pose.translation,
         rotation: plane.pose.rotation);
 

@@ -1,7 +1,5 @@
-import '/controller/search_controller.dart';
 import '/models/costume.dart';
 import '/screens/detail.dart';
-import '/widgets/search_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
