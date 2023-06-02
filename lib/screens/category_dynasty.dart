@@ -122,7 +122,9 @@ class _CategoryDScreenState extends State<CategoryDScreen> {
     }
 
     trieudaiList.forEach((costume) {
-      if (costume.costumeName.toLowerCase().contains(text)) _searchResult.add(costume);
+      if (costume.costumeName.contains(text) 
+      || costume.costumeName.toLowerCase().contains(text)
+      || costume.costumeName.toUpperCase().contains(text)) _searchResult.add(costume);
     });
 
     setState(() {});
@@ -237,7 +239,7 @@ class _CategoryDScreenState extends State<CategoryDScreen> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    createRoute( DetailScreen(costumeId: index,)));
+                    createRoute( DetailScreen(costumeId: _searchResult[index].costumeId,)));
                 },
                 child: Container(
                   child: Column(

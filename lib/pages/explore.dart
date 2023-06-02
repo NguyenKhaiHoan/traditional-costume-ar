@@ -52,7 +52,9 @@ class _ExplorePageState extends State<ExplorePage> {
     }
 
     costumeList.forEach((costume) {
-      if (costume.costumeName.contains(text)) _searchResult.add(costume);
+      if (costume.costumeName.contains(text) 
+      || costume.costumeName.toLowerCase().contains(text)
+      || costume.costumeName.toUpperCase().contains(text)) _searchResult.add(costume);
     });
 
     setState(() {});
@@ -549,7 +551,7 @@ class _ExplorePageState extends State<ExplorePage> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    createRoute( DetailScreen(costumeId: index,)));
+                    createRoute( DetailScreen(costumeId: _searchResult[index].costumeId,)));
                 },
                 child: Container(
                   child: Column(
