@@ -2,9 +2,7 @@ import '/pages/onboarding.dart';
 import 'package:flutter/material.dart';
 import 'package:arcore_flutter_plugin/arcore_flutter_plugin.dart';
 import 'package:firebase_core/firebase_core.dart';
-
 import 'screens/splash.dart';
-import 'widgets/search_box.dart';
 
 
 Future main() async {

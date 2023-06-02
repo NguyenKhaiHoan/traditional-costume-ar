@@ -62,32 +62,21 @@ class Costume {
         gender: 'Nữ',
         imageURL: 'assets/images/example-3.png',
         images: [
-          "https://scontent.fsgn2-3.fna.fbcdn.net/v/t39.30808-6/339455358_144265648347745_8817973244890924258_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=0debeb&_nc_ohc=K0h8JSUtCOEAX_vMwcd&_nc_ht=scontent.fsgn2-3.fna&oh=00_AfB_wsycmK_dk8J0fYiWtll80gh0OM15f3kKyL_SL8XXXg&oe=64331C56",
-          "https://scontent.fsgn2-9.fna.fbcdn.net/v/t39.30808-6/339559100_885073832571366_4259654247665704584_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=0debeb&_nc_ohc=8VeMFENm0usAX9EPc5F&_nc_ht=scontent.fsgn2-9.fna&oh=00_AfDJ6ZyyK51D7JLCJN7sYRqHvPazvC6WeOSB_z1l248dkQ&oe=643327BE",
-          "https://scontent.fsgn2-4.fna.fbcdn.net/v/t39.30808-6/339449547_966350917858767_7569890909004587983_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=0debeb&_nc_ohc=ambfFHlbg9YAX_PNX5I&_nc_ht=scontent.fsgn2-4.fna&oh=00_AfAzKwz3xcnJ3SUzar8aUdbcLCPAxXSRKcRqmaSdlMGSUw&oe=64326911",
-          "https://scontent.fsgn2-7.fna.fbcdn.net/v/t39.30808-6/339438855_745586903974066_2235131637162818647_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=0debeb&_nc_ohc=peJXinLT3eAAX99rpTe&_nc_ht=scontent.fsgn2-7.fna&oh=00_AfBnh07Sd0Rojm6vM-Aye1UOa0tNMllJvK80_pReTjH2SQ&oe=643272F0"
+          'assets/images/example-3.png'
         ],
         decription:
-        'This plant is one of the best plant. It grows in most of the regions in the world and can survive'
-            'even the harshest weather condition.This plant is one of the best plant. It grows in most of the regions in the world and can survive'
-            'even the harshest weather condition.',),
+        'Áo tứ diện là một loại áo có thể được mặc theo nhiều cách khác nhau, tạo ra 4 diện khác nhau cho người mặc. Đặc điểm chính của áo tứ diện là có thiết kế và cấu trúc cho phép các mặt trước, sau và hai bên của áo có thể được sắp xếp và kết hợp theo nhiều cách khác nhau.',),
     Costume(
         costumeId: 4,
         category: 'Lý',
         gender: 'Nữ',
         costumeName: 'Viên Lĩnh',
         images: [
-          "https://images.unsplash.com/photo-1607355739828-0bf365440db5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1444&q=80",
-          "https://images.unsplash.com/photo-1577791465485-b80039b4d69a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80",
-          "https://images.unsplash.com/photo-1577404699057-04440b45986f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80",
-          "https://images.unsplash.com/photo-1549973890-38d08b229439?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=642&q=80",
-          "https://images.unsplash.com/photo-1622263096760-5c79f72884af?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+          'assets/images/example-4.png'
         ],
         imageURL: 'assets/images/example-4.png',
         decription:
-        'This plant is one of the best plant. It grows in most of the regions in the world and can survive'
-            'even the harshest weather condition.This plant is one of the best plant. It grows in most of the regions in the world and can survive'
-            'even the harshest weather condition.',),
+        'Áo tứ diện là một loại áo có thể được mặc theo nhiều cách khác nhau, tạo ra 4 diện khác nhau cho người mặc. Đặc điểm chính của áo tứ diện là có thiết kế và cấu trúc cho phép các mặt trước, sau và hai bên của áo có thể được sắp xếp và kết hợp theo nhiều cách khác nhau.',),
     Costume(
         costumeId: 5,
         category: 'Nguyễn',
@@ -95,16 +84,10 @@ class Costume {
         costumeName: 'Áo Tấc',
         imageURL: 'assets/images/example-5.png',
         images: [
-          "https://images.unsplash.com/photo-1607355739828-0bf365440db5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1444&q=80",
-          "https://images.unsplash.com/photo-1577791465485-b80039b4d69a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80",
-          "https://images.unsplash.com/photo-1577404699057-04440b45986f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80",
-          "https://images.unsplash.com/photo-1549973890-38d08b229439?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=642&q=80",
-          "https://images.unsplash.com/photo-1622263096760-5c79f72884af?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+          'assets/images/example-5.png'
         ],
         decription:
-        'This plant is one of the best plant. It grows in most of the regions in the world and can survive'
-            'even the harshest weather condition.This plant is one of the best plant. It grows in most of the regions in the world and can survive'
-            'even the harshest weather condition.',),
+        'Áo tứ diện là một loại áo có thể được mặc theo nhiều cách khác nhau, tạo ra 4 diện khác nhau cho người mặc. Đặc điểm chính của áo tứ diện là có thiết kế và cấu trúc cho phép các mặt trước, sau và hai bên của áo có thể được sắp xếp và kết hợp theo nhiều cách khác nhau.',),
     Costume(
         costumeId: 6,
         category: 'Nguyễn',
@@ -113,16 +96,10 @@ class Costume {
 
         imageURL: 'assets/images/example-6.png',
         images: [
-          "https://images.unsplash.com/photo-1607355739828-0bf365440db5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1444&q=80",
-          "https://images.unsplash.com/photo-1577791465485-b80039b4d69a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80",
-          "https://images.unsplash.com/photo-1577404699057-04440b45986f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80",
-          "https://images.unsplash.com/photo-1549973890-38d08b229439?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=642&q=80",
-          "https://images.unsplash.com/photo-1622263096760-5c79f72884af?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+          'assets/images/example-6.png'
         ],
         decription:
-        'This plant is one of the best plant. It grows in most of the regions in the world and can survive'
-            'even the harshest weather condition.This plant is one of the best plant. It grows in most of the regions in the world and can survive'
-            'even the harshest weather condition.',),
+        'Áo tứ diện là một loại áo có thể được mặc theo nhiều cách khác nhau, tạo ra 4 diện khác nhau cho người mặc. Đặc điểm chính của áo tứ diện là có thiết kế và cấu trúc cho phép các mặt trước, sau và hai bên của áo có thể được sắp xếp và kết hợp theo nhiều cách khác nhau.',),
     Costume(
         costumeId: 7,
         category: 'Nguyễn',
@@ -130,16 +107,10 @@ class Costume {
         costumeName: 'Tritonia',
         imageURL: 'assets/images/example-7.png',
         images: [
-          "https://images.unsplash.com/photo-1607355739828-0bf365440db5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1444&q=80",
-          "https://images.unsplash.com/photo-1577791465485-b80039b4d69a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80",
-          "https://images.unsplash.com/photo-1577404699057-04440b45986f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80",
-          "https://images.unsplash.com/photo-1549973890-38d08b229439?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=642&q=80",
-          "https://images.unsplash.com/photo-1622263096760-5c79f72884af?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+          'assets/images/example-7.png'
         ],
         decription:
-        'This plant is one of the best plant. It grows in most of the regions in the world and can survive'
-            'even the harshest weather condition.This plant is one of the best plant. It grows in most of the regions in the world and can survive'
-            'even the harshest weather condition.',),
+        'Áo tứ diện là một loại áo có thể được mặc theo nhiều cách khác nhau, tạo ra 4 diện khác nhau cho người mặc. Đặc điểm chính của áo tứ diện là có thiết kế và cấu trúc cho phép các mặt trước, sau và hai bên của áo có thể được sắp xếp và kết hợp theo nhiều cách khác nhau.',),
     Costume(
         costumeId: 8,
         category: 'Nguyễn',
@@ -147,16 +118,10 @@ class Costume {
         costumeName: 'Tritonia',
         imageURL: 'assets/images/example-8.png',
         images: [
-          "https://images.unsplash.com/photo-1607355739828-0bf365440db5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1444&q=80",
-          "https://images.unsplash.com/photo-1577791465485-b80039b4d69a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80",
-          "https://images.unsplash.com/photo-1577404699057-04440b45986f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80",
-          "https://images.unsplash.com/photo-1549973890-38d08b229439?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=642&q=80",
-          "https://images.unsplash.com/photo-1622263096760-5c79f72884af?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+          'assets/images/example-8.png'
         ],
         decription:
-        'This plant is one of the best plant. It grows in most of the regions in the world and can survive'
-            'even the harshest weather condition.This plant is one of the best plant. It grows in most of the regions in the world and can survive'
-            'even the harshest weather condition.',),
+        'Áo tứ diện là một loại áo có thể được mặc theo nhiều cách khác nhau, tạo ra 4 diện khác nhau cho người mặc. Đặc điểm chính của áo tứ diện là có thiết kế và cấu trúc cho phép các mặt trước, sau và hai bên của áo có thể được sắp xếp và kết hợp theo nhiều cách khác nhau.',),
     Costume(
       costumeId: 9,
       category: 'Nguyễn',
@@ -164,15 +129,9 @@ class Costume {
       costumeName: 'Tritonia',
       imageURL: 'assets/images/example-9.png',
       images: [
-        "https://images.unsplash.com/photo-1607355739828-0bf365440db5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1444&q=80",
-        "https://images.unsplash.com/photo-1577791465485-b80039b4d69a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80",
-        "https://images.unsplash.com/photo-1577404699057-04440b45986f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80",
-        "https://images.unsplash.com/photo-1549973890-38d08b229439?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=642&q=80",
-        "https://images.unsplash.com/photo-1622263096760-5c79f72884af?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+        'assets/images/example-9.png'
       ],
       decription:
-      'This plant is one of the best plant. It grows in most of the regions in the world and can survive'
-          'even the harshest weather condition.This plant is one of the best plant. It grows in most of the regions in the world and can survive'
-          'even the harshest weather condition.',),
+      'Áo tứ diện là một loại áo có thể được mặc theo nhiều cách khác nhau, tạo ra 4 diện khác nhau cho người mặc. Đặc điểm chính của áo tứ diện là có thiết kế và cấu trúc cho phép các mặt trước, sau và hai bên của áo có thể được sắp xếp và kết hợp theo nhiều cách khác nhau.',),
   ];
 }

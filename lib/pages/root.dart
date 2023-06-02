@@ -5,15 +5,17 @@ import '/pages/try_on.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 
-class Example extends StatefulWidget {
+class Root extends StatefulWidget {
+  int selectIndex;
+
+  Root({Key? key, required this.selectIndex,}) : super(key: key);
+
   @override
-  _ExampleState createState() => _ExampleState();
+  State<Root> createState() => _RootState();
 }
 
-class _ExampleState extends State<Example> {
-  int _selectedIndex = 0;
-
-  static pageCaller(int index) {
+class _RootState extends State<Root> {
+  pageCaller(int index) {
     switch (index) {
       case 0:
         {
@@ -34,7 +36,7 @@ class _ExampleState extends State<Example> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-          child: pageCaller(_selectedIndex),
+          child: pageCaller(widget.selectIndex),
         ),
         bottomNavigationBar: BottomNavigationBar(
           selectedItemColor: Colors.black87,
@@ -64,19 +66,35 @@ class _ExampleState extends State<Example> {
                 activeIcon: Icon(IconlyBold.heart)
             ),
           ],
-          currentIndex: _selectedIndex,
+          currentIndex: widget.selectIndex,
           onTap: (index) {
             if (index != 2) {
               setState(() {
-                _selectedIndex = index;
+                widget.selectIndex = index;
               });
             } else {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => TryOnPage()),
+              Navigator.push(
+                context,
+                createRoute(
+                  TryOnPage(),
+                  // TakePictureScreen(camera: widget.camera)
+                ),
               );
             }
           },
         )
+    );
+  }
+
+  Route createRoute(Widget page) {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => page,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(
+          opacity: animation,
+          child: child,
+        );
+      },
     );
   }
 }

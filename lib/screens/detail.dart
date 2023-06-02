@@ -118,7 +118,9 @@ class _DetailScreenState extends State<DetailScreen> {
                           ),
                           CreateIcons(
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute( builder: ((context) => View3DScreen())));
+                              Navigator.push(
+                context,
+                createRoute( View3DScreen(url: 'assets/cubes/Jumpsuit_Female.glb',)));
                             },
                             child: Image.asset('assets/images/cube_3d.png', height: 25, width: 25,)
                           ),
@@ -175,8 +177,9 @@ class _DetailScreenState extends State<DetailScreen> {
                               ),
                               ElevatedButton(
                                 onPressed: () {
-                                  Navigator.of(context).push(
-                                    MaterialPageRoute(builder: (context) => TryOnPage()),
+                                  Navigator.push(
+                                    context,
+                                    createRoute( TryOnPage(url: "assets/cubes/Jumpsuit_Female.glb")),
                                   );
                                 },
                                 child: Container(
@@ -250,7 +253,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                       SizedBox(
                                         width: 10,
                                       ),
-                                      Text('Giới tính: Nam', style: TextStyle(fontSize: 16),),
+                                      Text('Giới tính: ' + costumeList[widget.costumeId].gender, style: TextStyle(fontSize: 16),),
                                     ],
                                   ),
                                 ],
@@ -316,7 +319,9 @@ class _DetailScreenState extends State<DetailScreen> {
                                   itemBuilder: (context, index) {
                                     return GestureDetector(
                                       onTap: () {
-                                        Navigator.push(context, MaterialPageRoute( builder: ((context) => DetailScreen(costumeId: index,))));
+                                        Navigator.push(
+                context,
+                createRoute( DetailScreen(costumeId: index,)));
                                       },
                                       child: Container(
                                         child: Column(
@@ -379,6 +384,19 @@ class _DetailScreenState extends State<DetailScreen> {
       ),
     );
   }
+
+  Route createRoute(Widget page) {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => page,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(
+          opacity: animation,
+          child: child,
+        );
+      },
+    );
+  }
+  
 }
 
 class CreateIcons extends StatelessWidget {

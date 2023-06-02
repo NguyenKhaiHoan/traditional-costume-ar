@@ -14,6 +14,10 @@ import '/screens/image_preview.dart';
 import 'package:vector_math/vector_math_64.dart' as vector;
 
 class TryOnPage extends StatefulWidget {
+  final url;
+  final name;
+
+  const TryOnPage({super.key, this.url, this.name});
   @override
   _TryOnPageState createState() => _TryOnPageState();
 }
@@ -41,7 +45,7 @@ class _TryOnPageState extends State<TryOnPage> with SingleTickerProviderStateMix
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 6, vsync: this);
+    _tabController = TabController(length: 7, vsync: this);
     _pageController = PageController(initialPage: 0);
     availableCameras().then((availableCameras) {
       cameras = availableCameras;
@@ -56,6 +60,7 @@ class _TryOnPageState extends State<TryOnPage> with SingleTickerProviderStateMix
     }).catchError((err) {
       print('Error :${err.code}Error message : ${err.message}');
     });
+    url = widget.url;
   }
 
   Future _initCameraController(CameraDescription cameraDescription) async {
@@ -214,7 +219,7 @@ class _TryOnPageState extends State<TryOnPage> with SingleTickerProviderStateMix
                               tabs: [
                                 Tab(icon: Icon(IconlyLight.heart)),
                                 Tab(text: 'Tất cả',),
-                                Tab(text: 'Nổi bật',),
+                                Tab(text: 'Firebase',),
                                 Tab(text: 'Nguyễn'),
                                 Tab(text: 'Lý'),
                                 Tab(text: 'Nam'),
@@ -228,42 +233,7 @@ class _TryOnPageState extends State<TryOnPage> with SingleTickerProviderStateMix
                                 child: TabBarView(
                                   controller: _tabController,
                                   children: [
-                                    // GridView.count(
-                                    //   crossAxisCount: 5,
-                                    //   children: List.generate(Get.find<CostumeController>().favoriteCostume.length, (index) {
-                                    //     return Container(
-                                    //       child: Center(
-                                    //         child: ClipRRect(
-                                    //           borderRadius: BorderRadius.circular(10),
-                                    //           child: Image.asset(
-                                    //             Get.find<CostumeController>().favoriteCostume.elementAt(index).imageURL,
-                                    //             fit: BoxFit.cover,
-                                    //             height: 60,
-                                    //             width: 60,
-                                    //           ),
-                                    //         ),
-                                    //       ),
-                                    //     );
-                                    //   }),
-                                    // ),
-                                    GridView.count(
-                                      crossAxisCount: 5,
-                                      children: List.generate(nguyenList.length, (index) {
-                                        return Container(
-                                          child: Center(
-                                            child: ClipRRect(
-                                              borderRadius: BorderRadius.circular(10),
-                                              child: Image.asset(
-                                                nguyenList.elementAt(index).imageURL,
-                                                fit: BoxFit.cover,
-                                                height: 60,
-                                                width: 60,
-                                              ),
-                                            ),
-                                          ),
-                                        );
-                                      }),
-                                    ),
+                                    Container(),
                                     GridView.count(
                                       crossAxisCount: 5,
                                       children: List.generate(costumeList.length, (index) {
@@ -306,6 +276,7 @@ class _TryOnPageState extends State<TryOnPage> with SingleTickerProviderStateMix
                                               ),
                                               onTap: () {
                                                 setState(() {
+                                                  arCoreController?.onNodeTap = (name) => onTapHandler(name);
                                                   url = mesh['url'];
                                                 });
                                               },
@@ -474,12 +445,13 @@ class _TryOnPageState extends State<TryOnPage> with SingleTickerProviderStateMix
 
   void _onCapturePressed(context) async {
     XFile file = await controller!.takePicture();
-    Navigator.push(context, MaterialPageRoute( builder: ((context) => PreviewScreen(file: file))));
+    Navigator.push(
+                context,
+                createRoute(PreviewScreen(file: file)));
   }
 
   void _onArCoreViewCreated(ArCoreController controller) {
     arCoreController = controller;
-    arCoreController?.onNodeTap = (name) => onTapHandler(name);
     arCoreController?.onPlaneTap = _handleOnPlaneTap;
   }
 
@@ -487,7 +459,6 @@ class _TryOnPageState extends State<TryOnPage> with SingleTickerProviderStateMix
     final toucanNode = ArCoreReferenceNode(
         name: "Toucano",
         objectUrl: url,
-        // objectUrl: "https://firebasestorage.googleapis.com/v0/b/ar-try-on-1b5c9.appspot.com/o/file%2FMidnight%20Elegance%2FMidnight%20Elegance.glb?alt=media&token=0420b4a3-96f9-459f-a928-1df2eb5203f3",
         position: plane.pose.translation,
         rotation: plane.pose.rotation);
 
@@ -532,4 +503,17 @@ class _TryOnPageState extends State<TryOnPage> with SingleTickerProviderStateMix
     arCoreController.dispose();
     super.dispose();
   }
+
+  Route createRoute(Widget page) {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => page,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(
+          opacity: animation,
+          child: child,
+        );
+      },
+    );
+  }
+  
 }

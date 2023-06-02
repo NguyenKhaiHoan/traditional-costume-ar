@@ -25,6 +25,14 @@ class DetailScreen2 extends StatefulWidget {
 
 class _DetailScreen2State extends State<DetailScreen2> {
   final _pageController = PageController();
+  late String url;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    url = widget.url;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +82,12 @@ class _DetailScreen2State extends State<DetailScreen2> {
                           ),
                           CreateIcons(
                               onTap: () {
-                                Navigator.push(context, MaterialPageRoute( builder: ((context) => View3DScreen())));
+                                Navigator.push(
+                                  context,
+                                  createRoute(
+                                    View3DScreen(url: url),
+                                  ),
+                                );
                               },
                               child: Image.asset('assets/images/cube_3d.png', height: 25, width: 25,)
                           ),
@@ -131,8 +144,9 @@ class _DetailScreen2State extends State<DetailScreen2> {
                               ),
                               ElevatedButton(
                                 onPressed: () {
-                                  Navigator.of(context).push(
-                                    MaterialPageRoute(builder: (context) => TryOnPage()),
+                                  Navigator.push(
+                context,
+                createRoute( TryOnPage(url: url)),
                                   );
                                 },
                                 child: Container(
@@ -340,6 +354,18 @@ class _DetailScreen2State extends State<DetailScreen2> {
       ),
     );
   }
+  Route createRoute(Widget page) {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => page,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(
+          opacity: animation,
+          child: child,
+        );
+      },
+    );
+  }
+  
 }
 
 class CreateIcons extends StatelessWidget {

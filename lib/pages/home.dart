@@ -72,7 +72,9 @@ class _HomePageState extends State<HomePage> {
             children: List.generate(3,
               (int index) => GestureDetector(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute( builder: ((context) => DetailScreen(costumeId: index,))));
+                  Navigator.push(
+                    context,
+                    createRoute(DetailScreen(costumeId: index,)));
                 },
                 child: Stack(
                   children: [
@@ -155,6 +157,18 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
+    );
+  }
+
+  Route createRoute(Widget page) {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => page,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(
+          opacity: animation,
+          child: child,
+        );
+      },
     );
   }
 }

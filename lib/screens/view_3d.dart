@@ -1,15 +1,23 @@
-import 'package:babylonjs_viewer/babylonjs_viewer.dart';
 import 'package:flutter/material.dart';
-// import 'package:model_viewer_plus/model_viewer_plus.dart';
+import 'package:model_viewer_plus/model_viewer_plus.dart';
 
 // creating class of stateful widget
 class View3DScreen extends StatefulWidget {
+  final String url;
+
+  const View3DScreen({super.key, required this.url});
   @override
   _View3DScreenState createState() => _View3DScreenState();
 }
 
 class _View3DScreenState extends State<View3DScreen> {
-
+  late String url;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    url = widget.url;
+  }
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -22,8 +30,11 @@ class _View3DScreenState extends State<View3DScreen> {
             child: Container(
               color: Colors.white,
               child: Center(
-                child: BabylonJSViewer(
-                  src: 'assets/cubes/black.glb',
+                child: ModelViewer(
+                  src: url,
+                  ar: true,
+                  autoRotate: true,
+                  cameraControls: true,
                 ),
               )
             )
@@ -38,7 +49,7 @@ class _View3DScreenState extends State<View3DScreen> {
                     onTap: () => Navigator.pop(context),
                     child: const Icon(
                       Icons.close_sharp,
-                      color: Colors.white,
+                      color: Colors.black,
                     ),
                   ),
                 ],

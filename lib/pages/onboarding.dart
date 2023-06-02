@@ -98,8 +98,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               curve: Curves.easeIn);
                         }
                       } else {
-                        Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (_) => Example()));
+                        Navigator.push(
+                          context,
+                          createRoute( Root(selectIndex: 0,)));
                       }
                     });
                   },
@@ -150,4 +151,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
     return indicators;
   }
+
+  Route createRoute(Widget page) {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => page,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(
+          opacity: animation,
+          child: child,
+        );
+      },
+    );
+  }
+  
 }
