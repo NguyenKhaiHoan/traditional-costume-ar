@@ -4,7 +4,6 @@ class Onboarding {
 
   Onboarding({required this.title, required this.description,});
 
-  //List of Plants data
   static List<Onboarding> onboardingList = [
     Onboarding(
         title: "Giới thiệu ứng dụng",
